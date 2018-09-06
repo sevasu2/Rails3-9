@@ -27,6 +27,16 @@ class PostsController < ApplicationController
         post.save # DBへ保存する
         redirect_to post_path(post.id) # 詳細画面へリダイレクト    end
   end
+  
+  def edit
+        @post = Post.find(params[:id])
+  end
+
+  def update
+    post = Post.find(params[:id])
+    post.update(post_params)
+    redirect_to post_path(post.id)
+  end
 
   private
 
